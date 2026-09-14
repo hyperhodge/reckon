@@ -1,0 +1,377 @@
+{
+  "basis": "Presentation mode (\u00a78.5): paths can be disclosive even when contents are not. Every value in a disclosive field is replaced with an opaque label keyed on the ref. Refs themselves carry no meaning and are not redacted -- P-0007 says nothing about what P-0007 is. Every cost figure here is a client-side estimate at list rates on the subscription rail -- a shadow price, not a bill.",
+  "chosen": [
+    "P-0001",
+    "P-0001-T08",
+    "P-0001-T09",
+    "P-0001-T10",
+    "R-0018",
+    "R-0019",
+    "R-0022",
+    "R-0023"
+  ],
+  "decisions": [
+    {
+      "at": "2026-09-07T00:27:38Z",
+      "debts": [],
+      "enforced": true,
+      "from_state": "approved",
+      "kind": "TaskTransition",
+      "notes": [
+        "skipped running, built -- advisory, not refused"
+      ],
+      "overridden": false,
+      "override": null,
+      "project_ref": "P-0001",
+      "task_ref": "P-0001-T08",
+      "to_state": "shipped"
+    },
+    {
+      "at": "2026-09-07T00:27:38Z",
+      "debts": [],
+      "enforced": true,
+      "from_state": "drafted",
+      "kind": "TaskTransition",
+      "notes": [
+        "skipped approved, running, built -- advisory, not refused"
+      ],
+      "overridden": false,
+      "override": null,
+      "project_ref": "P-0001",
+      "task_ref": "P-0001-T10",
+      "to_state": "shipped"
+    },
+    {
+      "at": "2026-09-07T05:05:45Z",
+      "debts": [],
+      "enforced": true,
+      "from_state": "drafted",
+      "kind": "TaskTransition",
+      "notes": [
+        "skipped approved, running, built -- advisory, not refused"
+      ],
+      "overridden": false,
+      "override": null,
+      "project_ref": "P-0001",
+      "task_ref": "P-0001-T09",
+      "to_state": "shipped"
+    }
+  ],
+  "people": "every field naming a person reads [Approver]",
+  "presentation_mode": true,
+  "projects": {
+    "P-0001": {
+      "act_tier": "minimal",
+      "budget_tokens_default": "250000",
+      "claude_project_id": null,
+      "context": "business",
+      "cost_to_date_gbp": null,
+      "data_sources": [
+        "claude-transcript-archive",
+        "claude-json",
+        "prices-json",
+        "scheduled-tasks-dir",
+        "project-working-files"
+      ],
+      "depends_on": [],
+      "directory": "[P-0001 \u00b7 directory]",
+      "git": "local",
+      "github_repo": null,
+      "inherent_risk": "5",
+      "is_ai_system": "yes",
+      "killed_reason": null,
+      "my_role": "deployer",
+      "name": "Project P-0001",
+      "next_review": "2026-12-12",
+      "one_liner": "[P-0001 \u00b7 one_liner]",
+      "output_location": "[P-0001 \u00b7 output_location]",
+      "parked_until": null,
+      "preferences_inherited": true,
+      "ref": "P-0001",
+      "residual_risk": "5",
+      "stage": "prototype",
+      "stage_since": "2026-09-05",
+      "third_party_output": "internal",
+      "type": "code",
+      "value_basis": "risk_reduced",
+      "value_estimate": "[P-0001 \u00b7 value_estimate]"
+    }
+  },
+  "redacted_fields": [
+    "brief",
+    "decision_owed",
+    "directory",
+    "github_repo",
+    "invocation_path",
+    "killed_reason",
+    "name",
+    "one_liner",
+    "outcome",
+    "output_location",
+    "parked_reason",
+    "parked_ref",
+    "path",
+    "queued_note",
+    "spec_path",
+    "transcript_path",
+    "value_estimate"
+  ],
+  "refs": {
+    "bindings": {
+      "P-0001": {
+        "allocated_at": "2026-09-05T18:39:50Z",
+        "kind": "project",
+        "natural_key": "[P-0001 \u00b7 natural_key]"
+      },
+      "P-0001-T08": {
+        "allocated_at": "2026-09-06T08:08:23Z",
+        "kind": "task",
+        "natural_key": "[P-0001-T08 \u00b7 natural_key]"
+      },
+      "P-0001-T09": {
+        "allocated_at": "2026-09-06T08:35:11Z",
+        "kind": "task",
+        "natural_key": "[P-0001-T09 \u00b7 natural_key]"
+      },
+      "P-0001-T10": {
+        "allocated_at": "2026-09-06T08:35:11Z",
+        "kind": "task",
+        "natural_key": "[P-0001-T10 \u00b7 natural_key]"
+      },
+      "R-0018": {
+        "allocated_at": "2026-09-06T10:12:18Z",
+        "kind": "run",
+        "natural_key": "dc721462-5e88-4f5b-b018-26815e909e79"
+      },
+      "R-0019": {
+        "allocated_at": "2026-09-06T10:12:18Z",
+        "kind": "run",
+        "natural_key": "df225f85-fa92-4f5f-bce0-7c79b4d287cd"
+      },
+      "R-0022": {
+        "allocated_at": "2026-09-06T20:52:10Z",
+        "kind": "run",
+        "natural_key": "cfc59582-fc49-4192-80d4-31b5c2ec5b39"
+      },
+      "R-0023": {
+        "allocated_at": "2026-09-06T20:52:10Z",
+        "kind": "run",
+        "natural_key": "62e44e8b-44fb-45d9-ac47-03a4d62ee4e8"
+      }
+    }
+  },
+  "runs": [
+    {
+      "aliases": [
+        "R-dc721462"
+      ],
+      "claude_session_id": "dc721462-5e88-4f5b-b018-26815e909e79",
+      "commits": [],
+      "cost_basis": "client-side estimate at list rates, priced by aggregate.py from the transcript. A shadow price, not a bill",
+      "cost_usd": 12.553532,
+      "ended_at": "2026-09-06T08:48:12.319Z",
+      "exit_code": null,
+      "model": "claude-opus-5",
+      "outputs": [],
+      "rail": "subscription",
+      "recorded_at": "2026-09-06T10:12:18Z",
+      "recorded_from": "ledger/runs.json, written by ledger/recorder.py",
+      "ref": "R-0018",
+      "started_at": "2026-09-06T08:17:44.982Z",
+      "status": null,
+      "stop_reason": "claude_complete",
+      "supersedes": null,
+      "surface": "code",
+      "task_class": "code-task",
+      "task_ref": "P-0001-T08",
+      "transcript_path": "[R-0018 \u00b7 transcript_path]",
+      "usage": {
+        "cache_creation_input_tokens": 205954,
+        "cache_read_input_tokens": 15946113,
+        "input_tokens": 192,
+        "output_tokens": 100799
+      }
+    },
+    {
+      "aliases": [
+        "R-df225f85"
+      ],
+      "claude_session_id": "df225f85-fa92-4f5f-bce0-7c79b4d287cd",
+      "commits": [],
+      "cost_basis": "client-side estimate at list rates, priced by aggregate.py from the transcript. A shadow price, not a bill",
+      "cost_usd": 4.3716,
+      "ended_at": "2026-09-06T09:13:40.532Z",
+      "exit_code": null,
+      "model": "claude-opus-5",
+      "outputs": [
+        "O-df225f85-01",
+        "O-df225f85-02"
+      ],
+      "rail": "subscription",
+      "recorded_at": "2026-09-06T10:12:18Z",
+      "recorded_from": "ledger/runs.json, written by ledger/recorder.py",
+      "ref": "R-0019",
+      "started_at": "2026-09-06T08:50:12.024Z",
+      "status": null,
+      "stop_reason": "claude_complete",
+      "supersedes": null,
+      "surface": "code",
+      "task_class": "investigation",
+      "task_ref": "P-0001-T09",
+      "transcript_path": "[R-0019 \u00b7 transcript_path]",
+      "usage": {
+        "cache_creation_input_tokens": 99952,
+        "cache_read_input_tokens": 4683341,
+        "input_tokens": 92,
+        "output_tokens": 41198
+      }
+    },
+    {
+      "aliases": [
+        "R-cfc59582"
+      ],
+      "claude_session_id": "cfc59582-fc49-4192-80d4-31b5c2ec5b39",
+      "commits": [],
+      "cost_basis": "client-side estimate at list rates, priced by aggregate.py from the transcript. A shadow price, not a bill",
+      "cost_usd": 15.656997,
+      "ended_at": "2026-09-06T20:03:43.876Z",
+      "exit_code": null,
+      "model": "claude-opus-5",
+      "outputs": [],
+      "rail": "subscription",
+      "recorded_at": "2026-09-06T20:52:10Z",
+      "recorded_from": "ledger/runs.json, written by ledger/recorder.py",
+      "ref": "R-0022",
+      "started_at": "2026-09-06T19:35:58.358Z",
+      "status": null,
+      "stop_reason": "claude_complete",
+      "supersedes": null,
+      "surface": "code",
+      "task_class": "code-task",
+      "task_ref": "P-0001-T10",
+      "transcript_path": "[R-0022 \u00b7 transcript_path]",
+      "usage": {
+        "cache_creation_input_tokens": 225462,
+        "cache_read_input_tokens": 21994984,
+        "input_tokens": 242,
+        "output_tokens": 96147
+      }
+    },
+    {
+      "aliases": [
+        "R-62e44e8b"
+      ],
+      "claude_session_id": "62e44e8b-44fb-45d9-ac47-03a4d62ee4e8",
+      "commits": [],
+      "cost_basis": "client-side estimate at list rates, priced by aggregate.py from the transcript. A shadow price, not a bill",
+      "cost_usd": 14.473978,
+      "ended_at": "2026-09-06T20:50:09.241Z",
+      "exit_code": null,
+      "model": "claude-opus-5",
+      "outputs": [],
+      "rail": "subscription",
+      "recorded_at": "2026-09-07T00:13:19Z",
+      "recorded_from": "ledger/runs.json, written by ledger/recorder.py",
+      "ref": "R-0023",
+      "started_at": "2026-09-06T20:04:38.489Z",
+      "status": null,
+      "stop_reason": "claude_complete",
+      "supersedes": {
+        "changed": [
+          "cost_usd",
+          "usage",
+          "ended_at",
+          "task_ref"
+        ],
+        "previous_cost_usd": 12.647914,
+        "recorded_at": "2026-09-06T20:52:10Z"
+      },
+      "surface": "code",
+      "task_class": "code-task",
+      "task_ref": "P-0001-T10",
+      "transcript_path": "[R-0023 \u00b7 transcript_path]",
+      "usage": {
+        "cache_creation_input_tokens": 218237,
+        "cache_read_input_tokens": 19325955,
+        "input_tokens": 230,
+        "output_tokens": 108224
+      }
+    }
+  ],
+  "tasks": {
+    "P-0001-T08": {
+      "approved_at": "2026-09-06T08:15:19Z",
+      "approved_by": "[Approver]",
+      "brief": "[P-0001-T08 \u00b7 brief]",
+      "budget_tokens": null,
+      "claude_task_id": null,
+      "depends_on": [
+        "P-0001-T07"
+      ],
+      "est_p95_usd": "14.0",
+      "outcome": "[P-0001-T08 \u00b7 outcome]",
+      "plan_row": [
+        "6"
+      ],
+      "project_ref": "P-0001",
+      "ref": "P-0001-T08",
+      "runs": [
+        "R-0018"
+      ],
+      "spec_path": "[P-0001-T08 \u00b7 spec_path]",
+      "spec_sha": null,
+      "stage_at_start": "prototype",
+      "state": "shipped",
+      "task_class": "code-task",
+      "task_type": "execute"
+    },
+    "P-0001-T09": {
+      "approved_at": null,
+      "approved_by": null,
+      "brief": "[P-0001-T09 \u00b7 brief]",
+      "budget_tokens": null,
+      "claude_task_id": null,
+      "est_p95_usd": "4.0",
+      "outcome": "[P-0001-T09 \u00b7 outcome]",
+      "project_ref": "P-0001",
+      "ref": "P-0001-T09",
+      "runs": [
+        "R-0019"
+      ],
+      "spec_path": "[P-0001-T09 \u00b7 spec_path]",
+      "spec_sha": null,
+      "stage_at_start": "prototype",
+      "state": "shipped",
+      "task_class": "investigation",
+      "task_type": "design"
+    },
+    "P-0001-T10": {
+      "approved_at": null,
+      "approved_by": null,
+      "brief": "[P-0001-T10 \u00b7 brief]",
+      "budget_tokens": null,
+      "claude_task_id": null,
+      "depends_on": [
+        "P-0001-T08"
+      ],
+      "est_p95_usd": "14.0",
+      "outcome": "[P-0001-T10 \u00b7 outcome]",
+      "plan_row": [
+        "7",
+        "8"
+      ],
+      "project_ref": "P-0001",
+      "ref": "P-0001-T10",
+      "runs": [
+        "R-0022",
+        "R-0023"
+      ],
+      "spec_path": "[P-0001-T10 \u00b7 spec_path]",
+      "spec_sha": null,
+      "stage_at_start": "prototype",
+      "state": "shipped",
+      "task_class": "code-task",
+      "task_type": "execute"
+    }
+  }
+}

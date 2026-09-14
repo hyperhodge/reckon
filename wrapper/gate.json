@@ -1,0 +1,72 @@
+{
+  "threshold_usd": 10.0,
+  "threshold_basis": "See docs/METHOD.md.",
+  "estimate_scope": "brief",
+  "estimate_scope_basis": "See docs/METHOD.md.",
+  "api_rail_cap_ceiling_usd": 5.0,
+  "api_rail_cap_ceiling_basis": "See docs/METHOD.md.",
+  "min_samples_for_prior": 3,
+  "priors_basis": "See docs/METHOD.md.",
+  "priors": {
+    "code-task": {
+      "n": 12,
+      "samples_usd": [
+        17.0,
+        13.93,
+        5.34,
+        5.81,
+        13.75,
+        15.77,
+        9.9,
+        12.55,
+        6.89,
+        8.74,
+        15.66,
+        14.47
+      ],
+      "basis": "Derived by ledger/recorder.py --priors from Run records. Each figure is a client-side estimate at list rates: a floor on what an account uses, not a bill.",
+      "excluded_from_samples": [
+        {
+          "ref": "P-0001-T06",
+          "cost_usd": 2.76,
+          "reason": "The run produced no work, so its cost is not a sample of what this class of task costs."
+        }
+      ],
+      "source": "derived by ledger/recorder.py from Run records"
+    },
+    "html-artifact": {
+      "n": 1,
+      "samples_usd": [
+        3.64
+      ],
+      "basis": "Derived by ledger/recorder.py --priors from Run records. Each figure is a client-side estimate at list rates: a floor on what an account uses, not a bill.",
+      "source": "hand-carried"
+    },
+    "investigation": {
+      "n": 1,
+      "samples_usd": [
+        4.37
+      ],
+      "basis": "Derived by ledger/recorder.py --priors from Run records. Each figure is a client-side estimate at list rates: a floor on what an account uses, not a bill.",
+      "source": "derived by ledger/recorder.py from Run records"
+    }
+  },
+  "defaults": {
+    "permission_mode": "acceptEdits",
+    "allowed_tools": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash"
+    ],
+    "output_format": "json"
+  },
+  "session_ceiling_gbp": 10.0,
+  "session_ceiling_basis": "See docs/METHOD.md.",
+  "session_ceiling_assistant_messages": 90,
+  "session_ceiling_messages_basis": "See docs/METHOD.md.",
+  "session_ceiling_action": "no-new-scope, finish-in-hand, hand off",
+  "session_ceiling_action_basis": "See docs/METHOD.md.",
+  "session_ceiling_read_set_note": "The files loaded at the start of a session are a small share of its cost; the number of turns is the large share. See docs/METHOD.md.",
+  "_session_ceiling_basis": "See docs/METHOD.md."
+}

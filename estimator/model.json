@@ -1,0 +1,661 @@
+{
+  "_note": "DERIVED by estimate.py --fit. Do not hand-edit: re-fit it. Two stages kept apart because they have very different evidence behind them -- words->turns is weak and carries the uncertainty, turns->cost is strong.",
+  "fitted_at_note": "Re-fit whenever preflight-ledger.md gains a row or runs.json is regenerated. A stale model still answers; it just answers from less.",
+  "turn_model": {
+    "selected": "items",
+    "terms": [
+      "log_items"
+    ],
+    "coefficients": {
+      "const": 3.392853499018189,
+      "log_items": 0.42105307875449943
+    },
+    "lambda": 0.0,
+    "n": 27,
+    "candidates_loo_rmse_log": {
+      "median_only": 0.699,
+      "items": 0.6827,
+      "words": 0.6912,
+      "items_and_words": 0.6986,
+      "all_eight": 0.9369
+    },
+    "improvement_over_median_only": 0.0233,
+    "loo_log_residual_quantiles": {
+      "0.1": -0.8709991667390997,
+      "0.5": 0.009075815081917238,
+      "0.9": 0.7997938086976861
+    },
+    "loo_log_residual_sd": 0.6826887038451432,
+    "loo_median_abs_ratio_error": 0.5684826156771066,
+    "_what_the_selection_means": "THE WORDS BARELY PREDICT THE SIZE. Every candidate sits within a few per cent of predicting the historical median and ignoring the proposal entirely, and the eight-feature model is markedly WORSE out of sample. Two reasons, and neither is fixable by trying harder on the text. (1) The training labels are short titles, five to fifteen words, because that is what the ledger recorded. (2) Turn count is partly a CHOICE: a session ran until it was done, interrupted, or out of ceiling, so the thing being predicted is not a property of the work alone. Read the per-item number as the historical median, lightly adjusted, and read the range as what that history actually did."
+  },
+  "cost_curve": {
+    "a_per_message": 0.11890271124307905,
+    "b_per_message_squared_over_100": 0.02344739466306096,
+    "ratio_quantiles": {
+      "0.1": 0.7033793019190888,
+      "0.5": 0.9221277012273513,
+      "0.9": 1.2110614710985543
+    },
+    "n": 46
+  },
+  "turn_samples": [
+    {
+      "label": "TASK-009 rail check — does a scripted `-p` run stay on the subscription rail? (P-0001-T09)",
+      "turns": 16,
+      "class": "investigation"
+    },
+    {
+      "label": "TASK-008 classification, enforcement, presentation mode (P-0001-T08)",
+      "turns": 74,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-006 front end (P-0001-T06) — SECOND ATTEMPT, SHIPPED",
+      "turns": 34,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-006 front end (P-0001-T06) — SCHEDULED RUN, DIED AT 22 SECONDS, RESUMED AND CLOSED",
+      "turns": 8,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-005 Entity store + ref scheme (P-0001-T05)",
+      "turns": 35,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-004 Recorder: Run + Output records (P-0001-T04)",
+      "turns": 31,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-007 risk model (P-0001-T07)",
+      "turns": 60,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-003 wrapper: gate + launcher (P-0001-T03)",
+      "turns": 14,
+      "class": "code-task"
+    },
+    {
+      "label": "Wire the ledger to the front end (app/ PWA + dashboard.py)",
+      "turns": 26,
+      "class": "code-task"
+    },
+    {
+      "label": "PARKED item 3: pre-reload safety check",
+      "turns": 45,
+      "class": "code-task"
+    },
+    {
+      "label": "Archive + limits tracker + canonical pages + backlinks (4 items)",
+      "turns": 30,
+      "class": "code-task"
+    },
+    {
+      "label": "Fill 1h cache-write rates + evidence-based rails",
+      "turns": 12,
+      "class": "code-task"
+    },
+    {
+      "label": "Build report artifact (Split and Ledger)",
+      "turns": 24,
+      "class": "html-artifact"
+    },
+    {
+      "label": "TASK-001 ledger (P-0001-T01)",
+      "turns": 30,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-002 nanowiki split (P-0007-T05)",
+      "turns": 52,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-012 API rail block — `rail: api` blocks in the gate unless a per-run opt-in is on the task file (P-0001-T12)",
+      "turns": 35,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-010 run ONE of two — `PLAN.md` row 7: the 16 acceptance queries (§10) and review scheduling (P-0001-T10)",
+      "turns": 112,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-010 run TWO of two — `PLAN.md` row 8: export consent, front-end presentation mode, the effort/cost join (P-0001-T10)",
+      "turns": 95,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-013 purge with consent — `PLAN.md` row 8's third and last item, plus the billing-rail correction and three carry-forwards (P-0001-T13)",
+      "turns": 78,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-015 the Model and DataSource reference tables — `PARKED.md` item 13, a task outside the eight plan rows (P-0001-T15)",
+      "turns": 55,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-016 `Task.outcome`, `plan_row`/`depends_on`, and the retirement of `PLAN.md` (P-0001-T16) — **plus a second, unbriefed instruction taken mid-session: `PARKED.md` item 11, the scheduler coverage gap**",
+      "turns": 109,
+      "class": "code-task"
+    },
+    {
+      "label": "`PARKED.md` mop-up — archive the closed items, put the open ones on the Register, and two checks the owner named (no ref; the third instruction of an earlier session)",
+      "turns": 40,
+      "class": "code-task"
+    },
+    {
+      "label": "TASK-014 user documentation — `README.md`, the user manual `TASK-011`'s section 1 became (P-0001-T14)",
+      "turns": 25,
+      "class": "code-task"
+    },
+    {
+      "label": "An earlier session — a calibration, then `decision_owed`, then the front end, on four instructions that arrived by conversation",
+      "turns": 122,
+      "class": "mixed"
+    },
+    {
+      "label": "Close the app server's cross-origin read and write, and give it a lifecycle that starts and stops without a terminal",
+      "turns": 35,
+      "class": "P-0001-T32 (carrying P-0009 and P-0008)"
+    },
+    {
+      "label": "Stop making the owner the integration layer — the language pass, the seams that could go, and the ordering on the screen",
+      "turns": 46,
+      "class": "P-0001-T33 (carrying the queue rule from an earlier session)"
+    },
+    {
+      "label": "A check that fails when the register renders a stale or blank page — and only then, put a service worker back",
+      "turns": 50,
+      "class": "P-0001-T32 (the stale-page check; see the outcome for the note that this ref now carries two different pieces of work)"
+    }
+  ],
+  "cost_samples_n": 46,
+  "_floor_rule": "Every cost here is a client-side estimate at list rates: a floor on what an account uses, not a bill, in US dollars.",
+  "realisation": {
+    "bottom_up_to_direct": 1.54550361741238,
+    "bottom_up_to_direct_n": 9,
+    "bottom_up_to_direct_spread": [
+      0.64,
+      3.98
+    ],
+    "direct_to_realised": 1.5118852310759858,
+    "combined": 2.336624093740288,
+    "evidence": {
+      "project_total_usd": 414.45,
+      "project_runs": 41,
+      "tasks_shipped": 23,
+      "realised_per_shipped_usd": 18.02,
+      "mean_direct_attributed_usd": 11.92,
+      "attributed_tasks": 9
+    },
+    "per_task": [
+      {
+        "task": "P-0001-T03",
+        "direct_actual_usd": 5.34,
+        "bottom_up_p50_usd": 3.45,
+        "ratio": 1.55
+      },
+      {
+        "task": "P-0001-T04",
+        "direct_actual_usd": 5.81,
+        "bottom_up_p50_usd": 3.45,
+        "ratio": 1.68
+      },
+      {
+        "task": "P-0001-T05",
+        "direct_actual_usd": 13.75,
+        "bottom_up_p50_usd": 3.45,
+        "ratio": 3.98
+      },
+      {
+        "task": "P-0001-T06",
+        "direct_actual_usd": 18.52,
+        "bottom_up_p50_usd": 10.7,
+        "ratio": 1.73
+      },
+      {
+        "task": "P-0001-T07",
+        "direct_actual_usd": 9.9,
+        "bottom_up_p50_usd": 14.99,
+        "ratio": 0.66
+      },
+      {
+        "task": "P-0001-T08",
+        "direct_actual_usd": 12.55,
+        "bottom_up_p50_usd": 14.99,
+        "ratio": 0.84
+      },
+      {
+        "task": "P-0001-T09",
+        "direct_actual_usd": 4.37,
+        "bottom_up_p50_usd": 3.45,
+        "ratio": 1.27
+      },
+      {
+        "task": "P-0001-T10",
+        "direct_actual_usd": 30.13,
+        "bottom_up_p50_usd": 18.18,
+        "ratio": 1.66
+      },
+      {
+        "task": "P-0001-T12",
+        "direct_actual_usd": 6.89,
+        "bottom_up_p50_usd": 10.7,
+        "ratio": 0.64
+      }
+    ],
+    "_top_down_cross_check": "The crude alternative is realised_per_shipped_usd times the number of items left, which assumes the items remaining are the same size as the ones shipped. Report it beside the corrected bottom-up figure: where the two disagree, the disagreement is the real uncertainty and averaging them would hide it."
+  },
+  "backtest": {
+    "n": 27,
+    "hits": 21,
+    "hit_rate": 0.7777777777777778,
+    "method": "leave-one-out: each row predicted by a model fitted without it, then checked against the 10th-90th percentile interval.",
+    "basis": "21 of 27 leave-one-out predictions contained the actual turn count inside the stated range.",
+    "interval_nominal": 0.8,
+    "ratio_quantiles": {
+      "0.1": 0.419,
+      "0.5": 1.009,
+      "0.9": 2.227
+    },
+    "worst_overrun": {
+      "label": "TASK-010 run ONE of two — `PLAN.md` row 7: the 16 acceptance queries (",
+      "actual_turns": 112,
+      "predicted_turns_p50": 38.3,
+      "range": [
+        16.0,
+        85.1
+      ],
+      "hit": false
+    },
+    "details": [
+      {
+        "label": "TASK-009 rail check — does a scripted `-p` run stay on the subscriptio",
+        "actual_turns": 16,
+        "predicted_turns_p50": 41.3,
+        "range": [
+          17.3,
+          91.8
+        ],
+        "hit": false
+      },
+      {
+        "label": "TASK-008 classification, enforcement, presentation mode (P-0001-T08)",
+        "actual_turns": 74,
+        "predicted_turns_p50": 45.9,
+        "range": [
+          19.2,
+          102.1
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-006 front end (P-0001-T06) — SECOND ATTEMPT, SHIPPED",
+        "actual_turns": 34,
+        "predicted_turns_p50": 48.3,
+        "range": [
+          20.2,
+          107.4
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-006 front end (P-0001-T06) — SCHEDULED RUN, DIED AT 22 SECONDS, R",
+        "actual_turns": 8,
+        "predicted_turns_p50": 65.8,
+        "range": [
+          27.5,
+          146.4
+        ],
+        "hit": false
+      },
+      {
+        "label": "TASK-005 Entity store + ref scheme (P-0001-T05)",
+        "actual_turns": 35,
+        "predicted_turns_p50": 29.3,
+        "range": [
+          12.3,
+          65.3
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-004 Recorder: Run + Output records (P-0001-T04)",
+        "actual_turns": 31,
+        "predicted_turns_p50": 29.6,
+        "range": [
+          12.4,
+          66.0
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-007 risk model (P-0001-T07)",
+        "actual_turns": 60,
+        "predicted_turns_p50": 28.0,
+        "range": [
+          11.7,
+          62.2
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-003 wrapper: gate + launcher (P-0001-T03)",
+        "actual_turns": 14,
+        "predicted_turns_p50": 31.8,
+        "range": [
+          13.3,
+          70.7
+        ],
+        "hit": true
+      },
+      {
+        "label": "Wire the ledger to the front end (app/ PWA + dashboard.py)",
+        "actual_turns": 26,
+        "predicted_turns_p50": 30.1,
+        "range": [
+          12.6,
+          67.0
+        ],
+        "hit": true
+      },
+      {
+        "label": "PARKED item 3: pre-reload safety check",
+        "actual_turns": 45,
+        "predicted_turns_p50": 28.7,
+        "range": [
+          12.0,
+          63.8
+        ],
+        "hit": true
+      },
+      {
+        "label": "Archive + limits tracker + canonical pages + backlinks (4 items)",
+        "actual_turns": 30,
+        "predicted_turns_p50": 29.7,
+        "range": [
+          12.4,
+          66.1
+        ],
+        "hit": true
+      },
+      {
+        "label": "Fill 1h cache-write rates + evidence-based rails",
+        "actual_turns": 12,
+        "predicted_turns_p50": 32.2,
+        "range": [
+          13.5,
+          71.7
+        ],
+        "hit": false
+      },
+      {
+        "label": "Build report artifact (Split and Ledger)",
+        "actual_turns": 24,
+        "predicted_turns_p50": 30.3,
+        "range": [
+          12.7,
+          67.5
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-001 ledger (P-0001-T01)",
+        "actual_turns": 30,
+        "predicted_turns_p50": 29.7,
+        "range": [
+          12.4,
+          66.1
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-002 nanowiki split (P-0007-T05)",
+        "actual_turns": 52,
+        "predicted_turns_p50": 28.3,
+        "range": [
+          11.9,
+          63.0
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-012 API rail block — `rail: api` blocks in the gate unless a per-",
+        "actual_turns": 35,
+        "predicted_turns_p50": 40.0,
+        "range": [
+          16.8,
+          89.1
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-010 run ONE of two — `PLAN.md` row 7: the 16 acceptance queries (",
+        "actual_turns": 112,
+        "predicted_turns_p50": 38.3,
+        "range": [
+          16.0,
+          85.1
+        ],
+        "hit": false
+      },
+      {
+        "label": "TASK-010 run TWO of two — `PLAN.md` row 8: export consent, front-end p",
+        "actual_turns": 95,
+        "predicted_turns_p50": 50.0,
+        "range": [
+          20.9,
+          111.3
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-013 purge with consent — `PLAN.md` row 8's third and last item, p",
+        "actual_turns": 78,
+        "predicted_turns_p50": 45.7,
+        "range": [
+          19.1,
+          101.8
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-015 the Model and DataSource reference tables — `PARKED.md` item ",
+        "actual_turns": 55,
+        "predicted_turns_p50": 39.3,
+        "range": [
+          16.5,
+          87.5
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-016 `Task.outcome`, `plan_row`/`depends_on`, and the retirement o",
+        "actual_turns": 109,
+        "predicted_turns_p50": 44.7,
+        "range": [
+          18.7,
+          99.6
+        ],
+        "hit": false
+      },
+      {
+        "label": "`PARKED.md` mop-up — archive the closed items, put the open ones on th",
+        "actual_turns": 40,
+        "predicted_turns_p50": 62.4,
+        "range": [
+          26.1,
+          138.9
+        ],
+        "hit": true
+      },
+      {
+        "label": "TASK-014 user documentation — `README.md`, the user manual `TASK-011`'",
+        "actual_turns": 25,
+        "predicted_turns_p50": 40.6,
+        "range": [
+          17.0,
+          90.3
+        ],
+        "hit": true
+      },
+      {
+        "label": "An earlier session — a calibration, then `decision_owed`, the",
+        "actual_turns": 122,
+        "predicted_turns_p50": 51.9,
+        "range": [
+          21.7,
+          115.5
+        ],
+        "hit": false
+      },
+      {
+        "label": "Close the app server's cross-origin read and write, and give it a life",
+        "actual_turns": 35,
+        "predicted_turns_p50": 40.0,
+        "range": [
+          16.8,
+          89.1
+        ],
+        "hit": true
+      },
+      {
+        "label": "Stop making the owner the integration layer — the language pass, the seams",
+        "actual_turns": 46,
+        "predicted_turns_p50": 54.2,
+        "range": [
+          22.7,
+          120.6
+        ],
+        "hit": true
+      },
+      {
+        "label": "A check that fails when the register renders a stale or blank page — a",
+        "actual_turns": 50,
+        "predicted_turns_p50": 47.1,
+        "range": [
+          19.7,
+          104.7
+        ],
+        "hit": true
+      }
+    ]
+  },
+  "baseline_hand_estimates": {
+    "n": 17,
+    "within_stated_high": 9,
+    "hit_rate": 0.5294117647058824,
+    "method": "the session's own stated p95 or hard budget against the measured actual, one-sided: did the work come in at or under the number it announced.",
+    "rows": [
+      {
+        "label": "TASK-009 rail check — does a scripted `-p` run stay on the s",
+        "stated_high": 4.0,
+        "actual": 4.37,
+        "within": false
+      },
+      {
+        "label": "TASK-008 classification, enforcement, presentation mode (P-0",
+        "stated_high": 14.0,
+        "actual": 12.55,
+        "within": true
+      },
+      {
+        "label": "TASK-006 front end (P-0001-T06) — SECOND ATTEMPT, SHIPPED",
+        "stated_high": 12.0,
+        "actual": 4.54,
+        "within": true
+      },
+      {
+        "label": "TASK-006 front end (P-0001-T06) — SCHEDULED RUN, DIED AT 22 ",
+        "stated_high": 12.0,
+        "actual": 1.6,
+        "within": true
+      },
+      {
+        "label": "TASK-005 Entity store + ref scheme (P-0001-T05)",
+        "stated_high": 8.0,
+        "actual": 13.75,
+        "within": false
+      },
+      {
+        "label": "TASK-004 Recorder: Run + Output records (P-0001-T04)",
+        "stated_high": 8.0,
+        "actual": 4.11,
+        "within": true
+      },
+      {
+        "label": "TASK-007 risk model (P-0001-T07)",
+        "stated_high": 9.0,
+        "actual": 9.14,
+        "within": false
+      },
+      {
+        "label": "TASK-003 wrapper: gate + launcher (P-0001-T03)",
+        "stated_high": 6.0,
+        "actual": 5.28,
+        "within": true
+      },
+      {
+        "label": "TASK-012 API rail block — `rail: api` blocks in the gate unl",
+        "stated_high": 5.0,
+        "actual": 6.89,
+        "within": false
+      },
+      {
+        "label": "TASK-010 run ONE of two — `PLAN.md` row 7: the 16 acceptance",
+        "stated_high": 14.0,
+        "actual": 15.3,
+        "within": false
+      },
+      {
+        "label": "TASK-010 run TWO of two — `PLAN.md` row 8: export consent, f",
+        "stated_high": 14.0,
+        "actual": 14.47,
+        "within": false
+      },
+      {
+        "label": "TASK-013 purge with consent — `PLAN.md` row 8's third and la",
+        "stated_high": 14.0,
+        "actual": 14.47,
+        "within": false
+      },
+      {
+        "label": "TASK-015 the Model and DataSource reference tables — `PARKED",
+        "stated_high": 10.0,
+        "actual": 5.1,
+        "within": true
+      },
+      {
+        "label": "TASK-016 `Task.outcome`, `plan_row`/`depends_on`, and the re",
+        "stated_high": 14.0,
+        "actual": 13.07,
+        "within": true
+      },
+      {
+        "label": "TASK-014 user documentation — `README.md`, the user manual `",
+        "stated_high": 6.0,
+        "actual": 6.0,
+        "within": true
+      },
+      {
+        "label": "An earlier session — a calibration, then `decision_",
+        "stated_high": 1.68,
+        "actual": 14.42,
+        "within": false
+      },
+      {
+        "label": "Close the app server's cross-origin read and write, and give",
+        "stated_high": 11.0,
+        "actual": 5.95,
+        "within": true
+      }
+    ]
+  }
+}

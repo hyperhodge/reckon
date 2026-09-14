@@ -1,0 +1,25 @@
+{
+  "_note": "Purge with consent, spec-v0.2.md §8.5. Data, not code: the ageing rule and the exemptions are the whole governance content of this tool and they are the things a person needs to be able to read and argue with without reading Python. Change them here, with a basis, the way ledger/rails.json rules are written.",
+  "_design_note": "The tool does not delete. It builds the candidate queue, records the consent, and prints the exact command for a person to run.",
+  "_ageing_note": "Ageing is by disuse, read from a named field of a record and not from the filesystem: `ended_at` on a Run, `first_written_at` on an Output. A file no record names is undecidable: it is reported and left alone.",
+  "age_days": 90,
+  "age_days_basis": "See docs/METHOD.md.",
+  "exempt_paths": [
+    "projects",
+    "tasks",
+    "runs",
+    "risk",
+    "decisions",
+    "store/refs.json"
+  ],
+  "exempt_paths_basis": "See docs/METHOD.md.",
+  "read_only_roots": [
+    "~/.claude/projects"
+  ],
+  "read_only_roots_basis": "See docs/METHOD.md.",
+  "candidate_roots": {
+    "transcripts": "~/Library/Application Support/claude-ledger/archive",
+    "working_files": "outputs recorded in ledger/runs.json, by path"
+  },
+  "held_reasons_note": "A candidate old enough to age out can still be HELD, which is different from exempt: exempt is a path rule, held is a fact about this particular file. A transcript cited by ledger/run-tasks.json or standing behind a derived prior in wrapper/gate.json is the evidence for a number the gate uses today, and deleting it would leave a prior with nothing behind it."
+}

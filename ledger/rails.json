@@ -1,0 +1,5 @@
+{
+  "_note": "Which billing rail a session ran on. The register this package was built from keeps dated evidence here; a new register starts with none. Add a rule with a date range and a reason when the rail changes.",
+  "default": "subscription",
+  "rules": []
+}
