@@ -1,7 +1,7 @@
 # Reckon
 
-**A record of work done with Claude, the AI coding assistant: what was asked, what it was estimated
-to cost before it started, what it cost, and what came of it.**
+**Reckon creates a log of all the work you do in Claude Code (the AI coding assistant) and estimates
+its token cost before it starts.**
 
 Built during August and September 2026. I use this build myself, and I am publishing this redacted
 core for others to review and try out. I may or may not come back to update or maintain it, but this
@@ -44,6 +44,27 @@ it touched, whether it is an AI system and in what role, who approved it, and wh
   integrity.
 - [The method](docs/METHOD.md) — estimate first, gate, measure, compare.
 - [A sample of findings to date](writing/what-the-register-measured.md)
+
+## Limits, and where it could go next
+
+**What it does not do yet:**
+
+- **The cost gate stands in front of scripted tasks only.** It does not stop or price a conversation
+  as you type in it.
+- **Costs are estimates, not a bill.** They are the transcript's own token counts at published list
+  prices. What an account is charged can differ, and use of Claude on the web, the desktop app or a
+  phone leaves no transcript on this computer, so it is not counted.
+- **The estimator's ranges are wide.** The top of a typical range was about ten times the bottom, so
+  its predictions are not yet ready to rely on.
+- **Headroom against the usage limits is inferred** from the points where requests were refused, not
+  read from the account.
+- **It is a snapshot.** It may not be updated or maintained.
+
+**Where it could go next:**
+
+- Give the estimator a breakdown of each piece of work to size, instead of a one-line title.
+- Put the gate in front of conversational sessions, not only scripted tasks.
+- Count work done outside Claude Code.
 
 ## Tests
 
