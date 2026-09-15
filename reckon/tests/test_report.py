@@ -69,9 +69,48 @@ class TestRun(unittest.TestCase):
 
     def test_no_overruns_says_so_plainly(self):
         out = io.StringIO()
-        with mock.patch.object(report, "_load_live", return_value=({}, [])):
+        live = ({"P-0001-T09": {"fields": {"est_p95_usd": 4.0}}},
+                [{"task_ref": "P-0001-T09", "cost_usd": 4.37}])
+        with mock.patch.object(report, "_load_live", return_value=live):
             report.run(out=out)
         self.assertIn("No task's recorded cost is more than 10%", out.getvalue())
+        self.assertNotIn("No tasks in this store yet", out.getvalue())
+
+
+class TestEmptyStore(unittest.TestCase):
+    """RECKON-USER-SPEC.md R4: a store with no tasks says so, instead of reading
+    the same as a store where nothing ran over its estimate."""
+
+    def report_on(self, tasks, runs):
+        out = io.StringIO()
+        with mock.patch.object(report, "_load_live", return_value=(tasks, runs)):
+            rc = report.run(out=out)
+        self.assertEqual(rc, 0)
+        return out.getvalue()
+
+    def test_no_tasks_and_no_runs_says_both(self):
+        text = self.report_on({}, [])
+        self.assertIn("No tasks in this store yet", text)
+        self.assertIn("Runs recorded: none yet", text)
+        self.assertIn("not a bill", text.lower())
+        self.assertNotIn("No task's recorded cost is more than", text)
+
+    def test_no_tasks_with_runs_gives_their_count_and_list_price_total(self):
+        runs = [{"task_ref": None, "cost_usd": 1.25}, {"task_ref": None, "cost_usd": 0.75},
+                {"task_ref": None, "cost_usd": None}]
+        text = self.report_on({}, runs)
+        self.assertIn("No tasks in this store yet", text)
+        self.assertIn("Runs recorded: 3, $2.00 at list rates.", text)
+        self.assertIn("not a bill", text.lower())
+        self.assertNotIn("No task's recorded cost is more than", text)
+
+    def test_tasks_with_runs_are_reported_as_before(self):
+        text = self.report_on({"P-0001-T10": {"fields": {"est_p95_usd": 14.0}}},
+                              [{"task_ref": "P-0001-T10", "cost_usd": 30.13}])
+        self.assertNotIn("No tasks in this store yet", text)
+        self.assertNotIn("Runs recorded", text)
+        self.assertIn("Tasks more than 10% over their estimate:", text)
+        self.assertIn("P-0001-T10     estimate $14.00   recorded $30.13   (+115%)", text)
 
     def test_sample_mode_reads_the_sample_file_not_the_live_store(self):
         with __import__("tempfile").TemporaryDirectory() as tmp:

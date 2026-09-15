@@ -3,6 +3,8 @@
 right arguments (RECKON-1.1-SPEC.md R1's acceptance test), reckon --help
 lists all four subcommands, and the install check gates every one of them."""
 
+import contextlib
+import io
 import sys
 import unittest
 from pathlib import Path
@@ -18,6 +20,17 @@ class TestHelpListsFourSubcommands(unittest.TestCase):
         text = cli.build_parser().format_help()
         for name in ("estimate", "gate", "record", "report"):
             self.assertIn(name, text)
+
+
+class TestRecordHelpNamesTheRealDefault(unittest.TestCase):
+    def test_record_help_names_claude_projects_not_an_undefined_archive(self):
+        """RECKON-USER-SPEC.md R3: on a fresh machine the default source is
+        ~/.claude/projects, and "the archive" is defined nowhere a newcomer reads."""
+        parser = cli.build_parser()
+        record = parser._subparsers._group_actions[0].choices["record"]
+        text = " ".join(record.format_help().split())
+        self.assertIn("~/.claude/projects", text)
+        self.assertNotIn("default the archive", text)
 
 
 class TestDispatch(unittest.TestCase):
@@ -72,17 +85,22 @@ class TestDispatch(unittest.TestCase):
         report_run.assert_called_once_with(sample=True)
 
     def test_no_command_prints_help_and_returns_nonzero(self):
-        rc = cli.main([])
+        printed = io.StringIO()
+        with contextlib.redirect_stdout(printed):
+            rc = cli.main([])
         self.assertEqual(rc, 1)
+        self.assertIn("usage: reckon", printed.getvalue())
 
 
 class TestInstallCheckGatesEveryCommand(unittest.TestCase):
     def test_a_refused_install_stops_before_any_module_runs(self):
         with mock.patch.object(install_check, "require_linked_install",
                                side_effect=install_check.NotLinkedInstall("nope")):
-            with mock.patch.object(cli, "_module") as module_lookup:
+            with mock.patch.object(cli, "_module") as module_lookup, \
+                    contextlib.redirect_stderr(io.StringIO()) as printed:
                 rc = cli.main(["estimate", "text"])
         self.assertEqual(rc, 2)
+        self.assertIn("ERROR: nope", printed.getvalue())
         module_lookup.assert_not_called()
 
 

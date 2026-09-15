@@ -1,0 +1,13 @@
+# Made by installing: the environment, and the install's own files.
+.venv/
+*.egg-info/
+build/
+__pycache__/
+
+# Written by `reckon record`: Reckon keeps its data beside its code.
+ledger/runs.json
+runs/
+store/refs.json
+
+# Your own task files, as docs/QUICKSTART.md suggests.
+my-tasks/

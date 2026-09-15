@@ -11,13 +11,28 @@ snapshot is out there.
 
 ## Quickstart
 
-```
-$ pip install -e .
+On macOS, in Terminal. Run `python3 --version` first: Reckon needs Python 3.9 or later, and
+[QUICKSTART.md](docs/QUICKSTART.md) says where `python3` and `git` come from on macOS and what the
+install was tested on.
+
+```sh
+git clone https://github.com/hyperhodge/reckon.git
+cd reckon
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -e .
 ```
 
-installs the one command, `reckon`, over `estimate`, `gate`, `record` and `report`. See
-[QUICKSTART.md](docs/QUICKSTART.md) for the install and every command's actual captured output,
-run end to end on this repository's own sample.
+That downloads Reckon, makes a Python environment for it inside the folder, and installs the one
+command, `reckon`, over `estimate`, `gate`, `record` and `report`. The pip upgrade line is needed on
+the Python 3.9 that comes with macOS, whose pip is too old to install a folder like this one.
+Until the environment is active macOS has `python3` and `pip3` but no `python` or `pip`; inside it,
+both work. In a new Terminal window, run `source .venv/bin/activate` from the `reckon` folder again
+first.
+
+See [QUICKSTART.md](docs/QUICKSTART.md) for every command's actual captured output, run end to end
+on this repository's own sample, and how to go on to your own work.
 
 ## Why
 
@@ -96,13 +111,15 @@ estimate $14.00  (source: front_matter) -- est_p95_usd from the task file's fron
 gate     ASK against $10.00 in gate.json
          - estimated p95 $14.00 is above the $10.00 threshold in gate.json (est_p95_usd from the task file's front matter).
 rail     subscription
-command  /tmp/reckon-bin/claude -p "$(cat sample/tasks/P-0001-T08.md)" --allowedTools Read,Edit,Write,Bash --permission-mode acceptEdits --output-format json --session-id baba21c7-5ae8-4684-abcf-fa62e8227857
+command  <claude> -p "$(cat sample/tasks/P-0001-T08.md)" --allowedTools Read,Edit,Write,Bash --permission-mode acceptEdits --output-format json --session-id <session id>
 
 ASK. Nothing was run. Answer the points above, then re-run with --execute once they are settled.
 ```
 
-`reckon record` and `reckon report`, and the other two `reckon gate` answers, are captured in full
-in [QUICKSTART.md](docs/QUICKSTART.md).
+`<claude>` is where Claude Code is installed on your computer and `<session id>` is new on every
+run. Without Claude Code the `command` line reads `shape` instead, with a note that it was not
+checked. `reckon record` and `reckon report`, the other two `reckon gate` answers and the form
+without Claude Code are captured in full in [QUICKSTART.md](docs/QUICKSTART.md).
 
 ## Where it could go next
 
@@ -115,9 +132,10 @@ in [QUICKSTART.md](docs/QUICKSTART.md).
 
 ## Tests
 
-Python 3.9 or later, standard library only, no network access. From the top of the repository:
+Python 3.9 or later, standard library only, no network access. Inside the environment from the
+Quickstart, from the top of the repository:
 
-```
+```sh
 python -m unittest discover -s store/tests
 python -m unittest discover -s wrapper/tests
 python -m unittest discover -s estimator/tests

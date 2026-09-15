@@ -2,7 +2,9 @@
 """reckon report: a read-only summary of the store, or of the sample shipped
 with the package. Decision 7, RECKON-1.1-SPEC.md: lists any task whose
 sessions cost more than 10% over its estimate, with the estimate-not-a-bill
-wording on its face. Prints only; writes nothing, so no consent is needed
+wording on its face. A store with no tasks says so, with the runs it holds,
+rather than reading like a store where nothing ran over (RECKON-USER-SPEC.md
+R4). Prints only; writes nothing, so no consent is needed
 (store.py's export consent gate is about writing an export, not this).
 """
 
@@ -95,6 +97,17 @@ def run(sample=False, root=None, out=None):
     print(f"reckon report -- {source_label}", file=out)
     print(NOT_A_BILL, file=out)
     print(file=out)
+
+    if not tasks:
+        print("No tasks in this store yet, so there is no estimate to compare a recorded "
+              "cost with.", file=out)
+        if runs:
+            total = sum(run.get("cost_usd") or 0.0 for run in runs)
+            print(f"Runs recorded: {len(runs)}, ${total:.2f} at list rates.", file=out)
+        else:
+            print("Runs recorded: none yet. `reckon record` reads your Claude Code "
+                  "transcripts into this store.", file=out)
+        return 0
 
     rows = overruns(tasks, cost_by_task(runs))
     if not rows:

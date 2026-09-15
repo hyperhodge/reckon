@@ -47,7 +47,9 @@ def build_parser():
 
     p_record = sub.add_parser(
         "record", help="turn Claude Code transcripts into Run records, then into the store")
-    p_record.add_argument("--source", default=None, help="transcript root; default the archive")
+    p_record.add_argument("--source", default=None, help="folder of Claude Code transcripts; default ~/.claude/projects, "
+                               "or the archive ledger/archive-config.json names if that "
+                               "file exists")
     p_record.add_argument("--session", default=None,
                           help="print one run only; nothing is intaken this way")
 

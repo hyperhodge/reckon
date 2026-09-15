@@ -6,7 +6,8 @@ run uses it. Nothing has to be set up before the first run.
 
 ## Getting started
 
-1. **Check Python.** Python 3.9 or later. Reckon uses the standard library only.
+1. **Install it** as the [Quickstart](QUICKSTART.md) shows. Python 3.9 or later; Reckon uses the
+   standard library only.
 2. **Run the tests** (below). They need nothing else: no network, no Claude Code, no records of your
    own.
 3. **Read [the method](METHOD.md)**, then set the gate threshold and the session ceiling below to
@@ -42,13 +43,14 @@ does not stop a conversation.
 
 ## Running the tests
 
-From the top of the repository:
+Inside the environment from the [Quickstart](QUICKSTART.md), from the top of the repository:
 
-```
+```sh
 python -m unittest discover -s store/tests
 python -m unittest discover -s wrapper/tests
 python -m unittest discover -s estimator/tests
 python -m unittest discover -s ledger/tests
+python -m unittest discover -s reckon/tests
 ```
 
 The tests need no records of your own: each one builds the data it checks in a temporary folder, or
