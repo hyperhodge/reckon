@@ -7,6 +7,7 @@ estimator ever becomes the thing it was built not to be: a confident point numbe
 
 import json
 import math
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -98,6 +99,36 @@ class TestEstimate(unittest.TestCase):
         raw = E.estimate("Build a thing", self.model, apply_realisation=False)
         cooked = E.estimate("Build a thing", self.model)
         self.assertGreater(cooked["cost_usd"]["p50"], raw["cost_usd"]["p50"])
+
+
+TELL_TALE_PATH = Path(__file__).resolve().parents[2] / "package" / "tell-tale-words.json"
+
+
+class TestRenderedWording(unittest.TestCase):
+    """RECKON-1.1-SPEC.md decision 4: printed wording the package's word check
+    would refuse is fixed at its source, not patched around later. 'COST, AS A
+    RANGE AND NEVER A POINT' tripped it; this both pins the replacement and
+    guards every other line render() prints against the same list."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.model = E.load_model()
+
+    def test_the_range_heading_no_longer_says_never(self):
+        est = E.estimate("Put the weekly limit on a screen", self.model)
+        self.assertIn("COST, AS A RANGE, NOT A POINT", E.render(est))
+
+    @unittest.skipUnless(TELL_TALE_PATH.exists(),
+                        "needs the register's own build-time word list, which a "
+                        "package built from it does not carry")
+    def test_rendered_output_carries_no_tell_tale_word(self):
+        words = json.loads(TELL_TALE_PATH.read_text(encoding="utf-8"))["words"]
+        tell_tale = re.compile(
+            r"(?<![\w-])(" + "|".join(re.escape(w) for w in words) + r")(?![\w-])", re.I)
+        est = E.estimate("Build a thing; test the thing, and write it up", self.model)
+        text = E.render(est)
+        matches = tell_tale.findall(text)
+        self.assertEqual(matches, [], f"tell-tale word(s) in render() output: {matches}")
 
 
 class TestCeilingAndSessions(unittest.TestCase):

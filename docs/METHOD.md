@@ -46,7 +46,17 @@ coding assistant bills the same account and leaves no transcript to read.
 
 ## 5. Compare
 
-Every estimate is logged beside its measured actual. `estimator/estimate.py` learns from that log:
+Every estimate is logged beside its measured actual. Before any of that, `estimator/estimate.py`
+breaks the proposal into pieces: a mechanical split, not a reading of the work. It splits on a new
+line, a semicolon or bullet, a dash, a comma followed by "and", or the words "then" / "and then",
+and drops fragments of four characters or less as punctuation noise; a proposal with no such break
+is priced as one piece. Where the wording states an explicit count — "the 16 acceptance queries",
+"four items" — that number is read directly as a size signal, capped at 16, because a stated count
+has been the single most reliable one in the log. Each piece is priced and printed on its own line
+(`reckon estimate` shows "BROKEN INTO N PIECE(S)"), so a split the rule got wrong is visible rather
+than hidden inside a total.
+
+`estimator/estimate.py` learns from that log:
 
 - **Turns from the proposal.** A ridge regression on the logarithm of turns, over features of the
   proposal's words — how many items it names, how long it is, whether it is a build or an

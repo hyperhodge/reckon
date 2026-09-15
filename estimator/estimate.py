@@ -743,7 +743,7 @@ def render(est: dict) -> str:
         lines.append(f"  ${item['cost_usd_p50']:6.2f}  {item['turns_p50']:5.1f} turns  "
                      f"{item['item'][:88]}")
     lines.append("")
-    lines.append("COST, AS A RANGE AND NEVER A POINT")
+    lines.append("COST, AS A RANGE, NOT A POINT")
     lines.append(f"  low   ${cost['low']:8.2f}   ({turns['low']:.0f} turns, "
                  f"{sessions['low']} session(s))")
     lines.append(f"  p50   ${cost['p50']:8.2f}   ({turns['p50']:.0f} turns, "

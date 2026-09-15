@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reckon"
+version = "1.1.0"
+description = "Preflight, gate, record and report the cost of a Claude Code task."
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+reckon = "reckon.cli:main"
+
+[tool.setuptools]
+packages = ["reckon", "reckon.tests"]

@@ -23,7 +23,7 @@ Leave-one-out: each task predicted by a model fitted without it.
 
 ## The gate on the sample
 
-The gate asks a person when a task's estimate is above its threshold, $10.00.
+The gate asks a person when a task's estimate is above its threshold, $10.00. Run for real (`wrapper.gate.decide`) on copies of these tasks marked approved -- as shipped, every one of them is `shipped`, not `approved`, and the same gate blocks all three on that alone.
 
 | Task | Estimate, USD at the 95th percentile | Threshold, USD | The gate |
 |---|---|---|---|
